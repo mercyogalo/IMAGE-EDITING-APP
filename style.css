@@ -4,9 +4,24 @@
    }
    .bg-xl{
     background-color: var(--secondary-color);
+    border: 10px solid var(--primary-color);
    }
+   .border-container{
+    border: 10px solid var(--primary-color);
+   }
+   .btn-color{
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    transition: all 200ms ease-in-out;
+   }
+   .btn-color:hover{
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+   }
+  
    .bg-image-background{
-background-color: var(--primary-color);
+    background-color: var(--primary-color);
    }
     .material-symbols-light--stars-rounded {
       display: inline-block;
