@@ -7,7 +7,7 @@
     border: 10px solid var(--primary-color);
    }
    .border-container{
-    border: 10px solid var(--primary-color);
+    border: 6px solid var(--primary-color);
    }
    .btn-color{
     color: var(--secondary-color);
