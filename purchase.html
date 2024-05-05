@@ -29,6 +29,18 @@
 .package{
     background-color: var(--secondary-color);
 }
+.background{
+    background-color: white;
+    color: #000000;
+}
+.svg-spinners--3-dots-bounce {
+    display: inline-block;
+    width: 80px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='4' cy='12' r='3' fill='black'%3E%3Canimate id='svgSpinners3DotsBounce0' attributeName='cy' begin='0;svgSpinners3DotsBounce1.end+0.25s' calcMode='spline' dur='0.6s' keySplines='.33,.66,.66,1;.33,0,.66,.33' values='12;6;12'/%3E%3C/circle%3E%3Ccircle cx='12' cy='12' r='3' fill='black'%3E%3Canimate attributeName='cy' begin='svgSpinners3DotsBounce0.begin+0.1s' calcMode='spline' dur='0.6s' keySplines='.33,.66,.66,1;.33,0,.66,.33' values='12;6;12'/%3E%3C/circle%3E%3Ccircle cx='20' cy='12' r='3' fill='black'%3E%3Canimate id='svgSpinners3DotsBounce1' attributeName='cy' begin='svgSpinners3DotsBounce0.begin+0.2s' calcMode='spline' dur='0.6s' keySplines='.33,.66,.66,1;.33,0,.66,.33' values='12;6;12'/%3E%3C/circle%3E%3C/svg%3E");
+  }
 </style>
 <body>
     <div class="container bg-xl">
@@ -90,19 +102,43 @@
     </div>
 </div>
 
+<div class="col-sm-12">
+    <h2 class="heading text-center">
+        USERS
+    </h2>
+
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h2 class="heading">
-                USERS
-            </h2>
-            <div class="col-sm-3">
-                <div class="circle ">
-                    free
+    <div class="row justify-content-evenly">
+            <div class="col-sm-3 text-center border border-light rounded-circle p-4 m-2 background">
+                <div class="fs-4 text-center">
+                    FREE
                 </div>
-                <div>
-                    10K
+                <div class="fs-1 fw-bold">
+                    500K
                 </div>
+                <span class="svg-spinners--3-dots-bounce"></span>
+            </div>
+
+                <div class="col-sm-3 text-center border border-light rounded-circle p-4 m-2 background">
+                    <div class="fs-4 text-center">
+                        STANDARD
+                    </div>
+                    <div class="fs-1 fw-bold">
+                        300K
+                    </div>
+                <span class="svg-spinners--3-dots-bounce"></span>
+                </div>
+                      
+                    <div class="col-sm-3 text-center border border-light rounded-circle p-4 m-2 background">
+                        <div class="fs-4 text-center">
+                            PREMIUM
+                        </div>
+                        <div class="fs-1 fw-bold">
+                            1M
+                        </div>
+                <span class="svg-spinners--3-dots-bounce"></span>
+                    </div>
+                          
             </div>
         </div>
     </div>
