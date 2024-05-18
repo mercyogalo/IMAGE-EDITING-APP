@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta class="description">
     <title>PicturePerfect.com</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/watermarkjs/1.1.0/watermark.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <style>
@@ -14,7 +15,6 @@
     #display-image{
       width: 800px;
       height: 500px;
-      border: 2px solid var(--secondary-color);
       display: block;
       margin: 0 auto;
       background-position: center;
@@ -23,11 +23,24 @@
     .background-button{
       background-color: var(--secondary-color);
     }
+    .result{
+      position: relative;
+      gap: 20px;
+    }
+.result img{
+  display: block;
+  position: relative;
+  max-height: 45vmin;
+  margin: auto;
+  max-width: calc(100% - 4vmin);
+}
+    
  
     @media (max-width) {
       #display-image{
-        width: 300px;
-        height: 150px;
+        width: auto;
+        height: 100px;
+        margin: 4px;
       }
       
     }
@@ -60,15 +73,28 @@
               <div class="col-sm-12 text-center mb-2">
                 <input type="file"id="img-input"accept="image/png, image/jpeg">
               </div>
-                <div class="col-sm-12 mb-2 ">
-                  <div id="display-image"class=" shadow-lg img-fluid ">
-                </div>
+                  <div id="display-image"class=" shadow-lg img-fluid col-sm-12 mb-2 mt-1 watermark">
+               
             </div>
 </div>
             </div>
         </div>
       </div>
     
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 result">
+              <figure class="image-container">
+                <img id="chosen-image">
+              </figure>
+              <input type="file"id="upload-button">
+              <label for="upload-button">
+                Choose an image
+              </label>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -77,21 +103,46 @@
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
-  const imgUpload=document.querySelector("#img-input");
-  var uploadedImage="";
 
-function display(){
-  const reader=new FileReader();
-
-  function fileUpload(){
-uploadedImage=reader.result;
-document.querySelector("#display-image").style.backgroundImage=`url(${uploadedImage})`
-  }
-  reader.addEventListener("load",fileUpload);
-  reader.readAsDataURL(this.files[0]);
-}
-  imgUpload.addEventListener("change",display);
+  //for the free package image editing
+  const imgUpload = document.querySelector("#img-input");
+  var uploadedImage = "";
   
+  function display() {
+    const reader = new FileReader();
+  
+    reader.onload = function () {
+      uploadedImage = reader.result;
+      document.getElementById('display-image').style.backgroundImage = `url(${uploadedImage})`;
+    };
+  
+    reader.readAsDataURL(imgUpload.files[0]);
+  }
+  
+  imgUpload.addEventListener("change", display);
+  
+
+
+//for the premium image editing
+const  uploadButton=document.querySelector("#upload-button");
+let image=document.querySelector("#chosen-image");
+
+function imageDisplay() {
+  document.querySelector(".result").style.display = "block";
+  let reader = new FileReader();
+  reader.readAsDataURL(uploadButton.files[0]);
+
+  function fileDisplay() {
+    image.setAttribute("src", reader.result);
+  }
+
+  reader.onload = fileDisplay;
+}
+
+uploadButton.addEventListener("change", imageDisplay);
+
+
+
 </script>
 
 
