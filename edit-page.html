@@ -12,20 +12,23 @@
     :root{
         --secondary-color:#800080;
     }
-    #display-image{
-      width: 800px;
-      height: 500px;
-      display: block;
-      margin: 0 auto;
-      background-position: center;
-      background-size: cover;
-    }
     .background-button{
       background-color: var(--secondary-color);
     }
     .result{
       position: relative;
       gap: 20px;
+    }
+  
+    .watermark{
+      position: relative;
+    }
+    .watermark::after{
+      content: "Picture Perfect";
+      position: absolute;
+      bottom: 0;
+       top: 0;
+       opacity: 0.3;
     }
 .result img{
   display: block;
@@ -70,17 +73,21 @@
                 PHOTOBOOTH
             </div>
             <hr />
-              <div class="col-sm-12 text-center mb-2">
-                <input type="file"id="img-input"accept="image/png, image/jpeg">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-6 freeResult">
+                    <figure class="image-container">
+                      <img id="free-image">
+                    </figure>
+                    <input type="file"id="free-button">
+                    <label for="free-button">
+                      Choose an image
+                    </label>
+                </div>
               </div>
-                  <div id="display-image"class=" shadow-lg img-fluid col-sm-12 mb-2 mt-1 watermark">
-               
             </div>
-</div>
-            </div>
-        </div>
-      </div>
-    
+      
+        
 
       <div class="container">
         <div class="row">
@@ -104,23 +111,24 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
 
-  //for the free package image editing
-  const imgUpload = document.querySelector("#img-input");
-  var uploadedImage = "";
+  //free package
   
-  function display() {
-    const reader = new FileReader();
-  
-    reader.onload = function () {
-      uploadedImage = reader.result;
-      document.getElementById('display-image').style.backgroundImage = `url(${uploadedImage})`;
-    };
-  
-    reader.readAsDataURL(imgUpload.files[0]);
+const  freeButton=document.querySelector("#free-button");
+let freeImage=document.querySelector("#free-image");
+
+function imageDisplay() {
+  document.querySelector(".freeResult").style.display = "block";
+  let reader = new FileReader();
+  reader.readAsDataURL(freeButton.files[0]);
+
+  function fileDisplay() {
+    image.setAttribute("src", reader.freeResult);
   }
-  
-  imgUpload.addEventListener("change", display);
-  
+
+  reader.onload = fileDisplay;
+}
+
+freeButton.addEventListener("change", imageDisplay);
 
 
 //for the premium image editing
