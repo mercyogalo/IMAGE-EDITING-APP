@@ -37,6 +37,14 @@
   margin: auto;
   max-width: calc(100% - 4vmin);
 }
+.display-image{
+  display: block;
+  margin: 0 auto;
+  height: 50%;
+  max-width: 100%;
+  background-position: center;
+  border: 1px solid var(--secondary-color);
+}
     
  
     @media (max-width) {
@@ -75,18 +83,10 @@
             <hr />
             <div class="container">
               <div class="row">
-                <div class="col-sm-6 freeResult">
-                    <figure class="image-container">
-                      <img id="free-image">
-                    </figure>
-                    <input type="file"id="free-button">
-                    <label for="free-button">
-                      Choose an image
-                    </label>
-                </div>
+                <input type="file"id="img-input"accept="image/png, image/jpeg"class="mb-2">
+                <div id="display-image"class="shadow-lg img-fluid watermark"></div>
               </div>
             </div>
-      
         
 
       <div class="container">
@@ -112,23 +112,22 @@
 <script>
 
   //free package
-  
-const  freeButton=document.querySelector("#free-button");
-let freeImage=document.querySelector("#free-image");
+  const imageinput=document.querySelector("#img-input");
+  var uploadedImage="";
 
-function imageDisplay() {
-  document.querySelector(".freeResult").style.display = "block";
-  let reader = new FileReader();
-  reader.readAsDataURL(freeButton.files[0]);
-
-  function fileDisplay() {
-    image.setAttribute("src", reader.freeResult);
+  function  display(){
+    const reader=new FileReader();
+    function fileUpload(){
+      uploadedImage=reader.result;
+      document.querySelector("#display-image").style.backgroundImage=`url${uploadedImage}`;
+      
+    }
+    reader.addEventListener("load",fileUpload);
+    readAsDataURL(this.File[0]);
   }
+  imageinput.addEventListener("change",display);
 
-  reader.onload = fileDisplay;
-}
 
-freeButton.addEventListener("change", imageDisplay);
 
 
 //for the premium image editing
