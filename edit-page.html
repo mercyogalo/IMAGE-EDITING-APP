@@ -37,6 +37,12 @@
   margin: auto;
   max-width: calc(100% - 4vmin);
 }
+.image-container{
+border: 1px solid var(--secondary-color);
+padding: 50px;
+border-radius: 4px;
+
+}
 .display-image{
   display: block;
   margin: 0 auto;
@@ -45,6 +51,10 @@
   background-position: center;
   border: 1px solid var(--secondary-color);
 }
+input[type="file"]{
+  display: none;
+}
+
     
  
     @media (max-width) {
@@ -84,18 +94,76 @@
             <div class="container">
               <div class="row">
                 <input type="file"id="img-input"accept="image/png, image/jpeg"class="mb-2">
-                <div id="display-image"class="shadow-lg img-fluid watermark"></div>
+                <div id="display-image"class="shadow-lg img-fluid "></div>
               </div>
             </div>
         
 
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 result">
-              <figure class="image-container">
+<div class="col-sm-6 ">
+<div class="filter mt-2 mb-2">
+  <label for="blur"class="mb-1">Blur</label>
+  <br />
+  <input type="range"min="0"max="5"value="0" step="0"id="blur">
+</div>
+
+  <div class="filter  mt-2 mb-2">
+  <label for="contrast"class="mb-1">Contrast</label>
+  <br />
+  <input type="range"min="0"max="200"value="100"id="contrast">
+</div>
+
+  <div class="filter mt-2 mb-2">
+  <label for="hue-rotate"class="mb-1">Hue rotate</label>
+  <br />
+  <input type="range"min="0"max="360"value="0"id="hue-rotate">
+</div>
+
+  <div class="filter mt-2 mb-2">
+  <label for="sepia"class="mb-1">Sepia</label>
+  <br />
+  <input type="range"min="0"max="100"value="0"id="sepia">
+</div>
+
+<div class="flip-buttons mt-2 mb-2">
+  <div class="flip-option">
+    <input type="radio"name="flip"id="no-flip" checked >
+    <label for="no-flip">
+      No flip
+    </label>
+<br />
+    <input type="radio"name="flip"id="flip-x" checked >
+    <label for="flip-x">
+      Flip horizontal
+    </label>
+    <br />
+    <input type="radio"name="flip"id="flip-y" checked >
+    <label for="flip-y">
+      Flip vertical
+    </label>
+
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="col-sm-6 result ">
+              <figure class="image-container ">
                 <img id="chosen-image">
               </figure>
-              <input type="file"id="upload-button">
+              <input type="file"id="upload-button" >
               <label for="upload-button">
                 Choose an image
               </label>
@@ -134,19 +202,87 @@
 const  uploadButton=document.querySelector("#upload-button");
 let image=document.querySelector("#chosen-image");
 
-function imageDisplay() {
+
+
+ 
+uploadButton.onchange=()=>{
   document.querySelector(".result").style.display = "block";
   let reader = new FileReader();
   reader.readAsDataURL(uploadButton.files[0]);
 
-  function fileDisplay() {
+  reader.onload = ()=>{
     image.setAttribute("src", reader.result);
-  }
-
-  reader.onload = fileDisplay;
+  };
 }
 
-uploadButton.addEventListener("change", imageDisplay);
+
+//premium image editing effects intergration
+
+let filterA=document.querySelector("#blur");
+let filterB=document.querySelector("#contrast");
+let filterC=document.querySelector("#hue-rotate");
+let filterD=document.querySelector("#sepia");
+
+let noFlipBtn=document.querySelector("#no-flip");
+let flipXBtn=document.querySelector("#flip-x");
+let flipYBtn=document.querySelector("#flip-y");
+
+let sliders=document.querySelectorAll(".filter input[type='range']");
+
+
+function addFilter(){
+  image.style.filter=`blur(${filterA.value}px)
+  contrast(${filterB.value}%)
+  hue-rotate(${filterC.value}deg)
+  sepia(${filterD.value}%)`;
+}
+
+
+let radioBtns=document.querySelectorAll(".flip-option input[type='radio']");
+radioBtns.forEach(radioBtn=>{
+  radioBtn.addEventListener("click",flipImage);
+}
+)
+
+
+function flipImage(){
+  if(flipXBtn.checked){
+    image.style.transform="scaleX(-1)";
+  }
+  else if(flipYBtn.checked){
+    image.style.transform="scaleY(-1)";
+  }
+  else{
+    images.style.transform="scale(1,1)";
+  }
+}
+
+
+
+
+
+
+
+
+sliders.forEach(
+  slider=>{
+    slider.addEventListener("input",addFilter);
+  }
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
