@@ -37,12 +37,7 @@
   margin: auto;
   max-width: calc(100% - 4vmin);
 }
-.image-container{
-border: 1px solid var(--secondary-color);
-padding: 50px;
-border-radius: 4px;
 
-}
 .display-image{
   display: block;
   margin: 0 auto;
@@ -91,17 +86,14 @@ input[type="file"]{
                 PHOTOBOOTH
             </div>
             <hr />
-            <div class="container">
-              <div class="row">
-                <input type="file"id="img-input"accept="image/png, image/jpeg"class="mb-2">
-                <div id="display-image"class="shadow-lg img-fluid "></div>
-              </div>
-            </div>
+          
         
 
+
+
       <div class="container">
-        <div class="row">
-<div class="col-sm-6 ">
+        <div class="row mt-3 mb-3 ">
+<div class="col-sm-4 ">
 <div class="filter mt-2 mb-2">
   <label for="blur"class="mb-1">Blur</label>
   <br />
@@ -123,7 +115,7 @@ input[type="file"]{
   <div class="filter mt-2 mb-2">
   <label for="sepia"class="mb-1">Sepia</label>
   <br />
-  <input type="range"min="0"max="100"value="0"id="sepia">
+  <input type="range"min="0"max="100"value="0"id="sepia" >
 </div>
 
 <div class="flip-buttons mt-2 mb-2">
@@ -148,29 +140,18 @@ input[type="file"]{
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-          <div class="col-sm-6 result ">
+          <div class="col-sm-4 result  text-center">
               <figure class="image-container ">
                 <img id="chosen-image">
               </figure>
               <input type="file"id="upload-button" >
-              <label for="upload-button">
+              <label for="upload-button"  class="btn btn-primary ps-2 pe-2 text-center">
                 Choose an image
               </label>
           </div>
         </div>
       </div>
-
+ 
 
 
 
@@ -180,20 +161,6 @@ input[type="file"]{
 <script>
 
   //free package
-  const imageinput=document.querySelector("#img-input");
-  var uploadedImage="";
-
-  function  display(){
-    const reader=new FileReader();
-    function fileUpload(){
-      uploadedImage=reader.result;
-      document.querySelector("#display-image").style.backgroundImage=`url${uploadedImage}`;
-      
-    }
-    reader.addEventListener("load",fileUpload);
-    readAsDataURL(this.File[0]);
-  }
-  imageinput.addEventListener("change",display);
 
 
 
