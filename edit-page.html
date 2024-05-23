@@ -33,9 +33,12 @@
 .result img{
   display: block;
   position: relative;
-  max-height: 45vmin;
+  max-height: 300px;
   margin: auto;
-  max-width: calc(100% - 4vmin);
+  max-width: 300px;
+}
+body{
+  background-color: var(--secondary-color);
 }
 
 .display-image{
@@ -50,13 +53,19 @@ input[type="file"]{
   display: none;
 }
 
-    
+    .heading{
+      font-size: 30px;
+    }
  
-    @media (max-width) {
+    @media (max-width: 576px) {
       #display-image{
         width: auto;
         height: 100px;
         margin: 4px;
+      }
+      .result img{
+        max-height: 200px;
+        max-width: 200px;
       }
       
     }
@@ -82,13 +91,14 @@ input[type="file"]{
         </div>
       </nav>
 
+      <h1 class="col-sm-12 text-center heading text-light">
+        PHOTOBOOTH
+      </h1>
+    <hr />
 
       <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-left">
-                PHOTOBOOTH
-            </div>
-            <hr />
+        <div class="row bg-light">
+          
           
         
 
