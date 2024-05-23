@@ -52,13 +52,54 @@
 
 
 
+<h1 class="heading text-center">
+  GALLERY
+</h1>
 
-
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+<img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/233/original/The_girl_in_color_light.jpeg?1714638941" alt="image"id="sample-one" class="img-fluid mt-2 w-100 height-auto ">
+<button type="button"class="btn btn-warning mt-2" data-download="sample-one">
+Download Image
+</button>
+    </div>
+    <div class="col-sm-4">
+      <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/230/original/Blue.jpeg?1714638890" alt="image"id="sample-two"class="img-fluid mt-2 w-100 height-auto ">
+<button type="button"class="btn btn-warning mt-2" data-download="sample-two">
+Download Image
+</button>
+    </div>
+    <div class="col-sm-4">
+      <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/125/232/original/1b98cc39-17c2-4cce-b5ff-a40ff4a2ca75.jpeg?1714638926" alt="image"id="sample-three"class="img-fluid mt-2 w-100 height-auto ">
+<button type="button"class="btn btn-warning mt-2" data-download="sample-three">
+Download Image
+</button>
+    </div>
+  </div>
+</div>
 
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
    <div class="row  text-center footer pt-5 pb-5 mt-4">
    
@@ -103,6 +144,26 @@
 </div>
 
 
+
+
+<script>
+const downloadLinks=document.querySelectorAll("[data-download]");
+downloadLinks.forEach(button=>{
+  const id=button.dataset.download;
+  const image=document.getElementById(id);
+  const a=document.createElement("a");
+
+  a.href=image.src;
+  a.download=" ";
+  a.style.display="none";
+
+  button.addEventListener("click",()=>{
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  })
+})
+</script>
 
 </body>
 </html>
