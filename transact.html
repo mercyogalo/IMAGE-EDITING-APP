@@ -23,23 +23,33 @@
         display: block;
         margin: 0 auto;
       }
+      .transact-page{
+        display: block;
+        margin: 0 auto;
+        margin-top: 100px;
+        border: 1px solid #000000;
+
+      }
 </style>
 <body>
+    <div class="transact-page">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center heading">
                 PURCHASE
             </div>
-            
+            <p class="text-center">
+                Choose your preferred payment plan
+            </p>
               <div id="paypal-button-container" class="col-sm-4 mt-4 mb-2"></div>
               <p id="result-message"></p>
               <!-- Replace the "test" client-id value with your client-id -->
               <script
-                src="https://www.paypal.com/sdk/js?client-id=test&components=buttons&enable-funding=venmo,paylater"
+                src="https://www.paypal.com/sdk/js?client-id=AfOCKLx6BVjtd-F19IMz_qWrsbOiKmf0nPp7NBuU2s2vHH_aGpra9voy-e8hv4c1D91oAk3ifzUHgxHs&components=buttons&enable-funding=venmo,paylater"
                 data-sdk-integration-source="integrationbuilder_sc"
               ></script>
             
-        
+            </div>
 
     
               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

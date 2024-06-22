@@ -12,8 +12,12 @@ window.paypal
           body: JSON.stringify({
             cart: [
               {
-                id: "YOUR_PRODUCT_ID",
-                quantity: "YOUR_PRODUCT_QUANTITY",
+                id: "premium",
+                quantity: "250",
+              },
+              {
+                id: "standard",
+                quantity: "150",
               },
             ],
           }),
@@ -88,7 +92,4 @@ window.paypal
   .render("#paypal-button-container");
 
 // Example function to show a result to the user. Your site's UI library can be used instead.
-function resultMessage(message) {
-  const container = document.querySelector("#result-message");
-  container.innerHTML = message;
-}
+
